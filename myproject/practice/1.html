@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            
+   <!-- JS -->		
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        header{
+            /* border-bottom: 1px solid gray; */
+            padding: 10px;
+            text-align: center;
+
+        }
+
+        footer{
+            /* border-top: 1px solid gray; */
+            padding: 20px;
+            text-align: center;
+            font-family: 'Nanum Gothic', sans-serif;
+            margin-bottom: 50px;
+        }
+
+        .content{
+            display: flex;
+            
+        }
+        .content nav{
+            /* border-right: 1px solid gray; */
+        }
+
+        .content aside{
+            /* border-left: 1px solid gray; */
+        }
+
+        nav, aside{
+            flex-basis: 150px;
+            flex-shrink: 0;
+        }
+        main{
+            flex-basis: 800px;
+            flex-shrink: 0;
+            border-bottom: 1px solid lightgrey;
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        .item_pic{
+            background-image: url(https://m.dansoon.co.kr/web/product/big/201907/63a2f684d3f297b9518560a420948984.jpg);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 350px;
+            margin: 10px;
+        }
+        .item_dis{
+            padding: 10px;
+        }
+        .item_order{
+            padding: 10px;
+        }
+
+    </style>
+    <!-- 나눔고딕체 : font-family: 'Nanum Gothic', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+
+</head>
+
+
+<body>
+    <div class="container">
+        <header>
+            <h1>스파르타코딩 HW week1</h1>
+        </header>
+
+        <section class = "content">
+            <nav>
+                <!-- <ul>
+                    <li>목록</li>
+                    <li>목록2</li>
+                    <li>목록3</li>
+                </ul> -->
+            </nav>
+
+            <main>
+                <div class="item_pic">
+
+                </div>
+                <div class="item_dis">
+                    <h5>원컵 텀블러 화이트</h5>
+                    <p>가격: 2,500원</p>
+                    <p>손잡이가 없고 약간 길쭉한 형태를 가지고 있는 컵을 의미한다. 손잡이가 없어 넘어지면 막힘없이 구른다고(tumble) 하여 텀블러라는 이름이 붙었다. 재질은 유리가 주로 쓰여서 유리재질만 텀블러로 아는 경우도 있으나, 사실 재질은 상관 없으며 도기나 금속 등의 재질이 사용되는 경우도 있다. 텀블러가 아닌 컵의 경우 옆으로 손잡이가 있는 것은 머그, 와인잔같이 밑으로 줄기가 있는경우 스템웨어라고 한다.
+                    </p>
+                    
+                </div>
+                <div class="item_order">
+                    <h5>주문정보</h5>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-default">주문자이름</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                      </div>
+        
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                          <option selected>Choose...</option>
+                          <option value="1">1개</option>
+                          <option value="2">2개</option>
+                          <option value="3">3개</option>
+                        </select>
+                      </div>
+        
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                      </div>
+        
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                      </div>
+
+                </div>
+            </main>
+
+            <aside>
+                <!-- 광고 -->
+            </aside>
+
+        </section>
+
+        <footer>
+            <button type="button" class="btn btn-outline-secondary">주문완료</button>
+        </footer>
+        
+ 
+    </div>
+    
+</body>
+</html>
