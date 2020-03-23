@@ -64,15 +64,14 @@
             let inputq1 = $('#input-q1').val()
             let inputq2 = $('#input-q2').val()
             let inputq3 = $('#input-q3').val()
-            let input_select = $('#inputGroupSelect01').val()
-            var length = $('#inputGroupSelect01').length;
+            let input_select = $('#orderselect').val()
             if (inputq1===''&&inputq2===''&&inputq3===''&&input_select==='--색상을 선택하세요--'||inputq1==='') {
                 alert('이름을 입력하세요')
                 $('#input-q1').focus()
             }
             else if (inputq2===''&&inputq3===''&&input_select==='--색상을 선택하세요--'||input_select==='--색상을 선택하세요--') {
                 alert('색상을 선택하세요')
-                
+                $('#orderselect').focus()
             }
             else if (inputq2===''&&inputq3===''||inputq2==='') {
                 alert('주소를 입력하세요')
@@ -119,7 +118,7 @@
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">색상</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="orderselect">
               <option selected>--색상을 선택하세요--</option>
               <option value="1">골드</option>
               <option value="2">실버</option>
