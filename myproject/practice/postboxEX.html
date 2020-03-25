@@ -5,7 +5,6 @@
 
     <!-- Webpage Title -->
     <title>Hello, world!</title>
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,6 +63,34 @@
                 $('#open_post').text('포스팅 박스 열기')
                 $('#post-box').hide()
             }
+        }
+        $(document).ready(function(){
+            $('#cards-box').html('') //html내의 내용을 지운다는 의미
+            listing()
+        })
+        function listing() {
+            $.ajax ({
+                type: 'GET',
+                url: 'http://spartacodingclub.shop/post',
+                data: {},
+                success: function(response) {
+                    let articles = response['articles']
+                    for (let i =0;i<articles.length;i++){
+                        make_card(articles[i]['comment'],articles[i]['image'],articles[i]['desc'],articles[i]['title'],articles[i]['url'])
+                    }
+                }
+            })
+        }
+        function make_card(comment, desc, image, title, url) {
+            let temp_html = '<div class="card">\
+                <img class="card-img-top" src="'+ image +'" alt="Card image cap">\
+                <div class="card-body">\
+                    <a href="'+url+'" class="card-title">'+title+'</a>\
+                    <p class="card-text">'+desc+'</p>\
+                    <p class="card-text comment">'+comment+'</p>\
+                </div>\
+            </div>'
+            $('#cards-box').append(temp_html)
         }
     </script>
 </head>
