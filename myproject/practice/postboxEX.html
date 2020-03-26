@@ -64,33 +64,21 @@
                 $('#post-box').hide()
             }
         }
-        $(document).ready(function(){
-            $('#cards-box').html('') //html내의 내용을 지운다는 의미
+        $(document).ready(function()) {
             listing()
-        })
+        }
         function listing() {
-            $.ajax ({
+            $.ajax  ({
                 type: 'GET',
                 url: 'http://spartacodingclub.shop/post',
                 data: {},
                 success: function(response) {
-                    let articles = response['articles']
-                    for (let i =0;i<articles.length;i++){
-                        make_card(articles[i]['comment'],articles[i]['image'],articles[i]['desc'],articles[i]['title'],articles[i]['url'])
+                    const articles = response['articles']
+                    for (let i=0;i<articles.length;i++){
+                        
                     }
                 }
             })
-        }
-        function make_card(comment, desc, image, title, url) {
-            let temp_html = '<div class="card">\
-                <img class="card-img-top" src="'+ image +'" alt="Card image cap">\
-                <div class="card-body">\
-                    <a href="'+url+'" class="card-title">'+title+'</a>\
-                    <p class="card-text">'+desc+'</p>\
-                    <p class="card-text comment">'+comment+'</p>\
-                </div>\
-            </div>'
-            $('#cards-box').append(temp_html)
         }
     </script>
 </head>
