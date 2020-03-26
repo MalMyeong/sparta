@@ -25,8 +25,7 @@
               data: {},
               success: function(response) {
                   const catImage = response[0]['url'] //list와 dictionary의 조합 (리스트내의 0번 딕셔너리의 url이란 key의 value를 불러달라)
-                  const temp = '<img id="img-cat" width="300px" src="'+catImage+'"/>'
-                  $('#img-cat').append(temp)
+                  $('#img-cat').attr('src',catImage)
               }
           })
         // 여기에 코드를 입력하세요
