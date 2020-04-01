@@ -23,11 +23,12 @@ for movie in movies:
     if a_tag is not None:
         title = a_tag.text
         star = movie.select_one('td.point').text
-
+        print(rank, title, star)
         doc = {
-        'rank': rank,
-        'title': title,
-        'star': star
+            'rank' : rank,
+            'title' : title,
+            'star' : star
         }
         db.movies.insert_one(doc)
         rank += 1
+
