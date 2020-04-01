@@ -10,14 +10,21 @@ data = requests.get('https://www.genie.co.kr/chart/top200',headers=headers)
 soup = BeautifulSoup(data.text, 'html.parser')
 
 musics = soup.select('#body-content > div.newest-list > div > table > tbody > tr > td.info')
-n = 0
+rank = 1
 
 for music in musics:
-    n = n+1
     title = music.find('a', {'class':'title ellipsis'})
     a_title = title.text.strip()
     artist = music.find('a', {'class':'artist ellipsis'})
     a_artist = artist.text
     album = music.find('a', {'class':'albumtitle ellipsis'})
     a_album = album.text
-    print(n, a_title, a_artist, a_album)
+    print(rank, a_title, a_artist, a_album)
+    doc = {
+        'rank': rank,
+        'title': a_title,
+        'artist': a_artist,
+        'album': a_album
+    }
+    db.musics.insert_one(doc)
+    rank += 1
