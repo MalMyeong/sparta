@@ -37,7 +37,7 @@
             // 1. 제목, 저자, 리뷰 내용을 가져옵니다.
             const title = $('#title').val()
             const author = $('#author').val()
-            const review = $('review').val()
+            const review = $('#review').val()
             // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
             if (title === '') {
             alert('제목을 입력하세요.')
@@ -54,7 +54,7 @@
             // 3. POST /reviews 에 저장을 요청합니다.
             $.ajax({
                 type: 'POST', // 타입을 작성합니다.
-                url: '0.0.0.0:5000/reviews', // url을 작성합니다.
+                url: 'http://localhost:5000/reviews', // url을 작성합니다.
                 data: {'title': title, 'author': author, 'review': review}, // data를 작성합니다. },
                 success: function (response) {
                     if (response['result'] == 'success') {
@@ -74,11 +74,15 @@
             // 3. 요청 성공했을 때 리뷰를 올바르게 화면에 나타내기
             $.ajax({
                 type: "GET",
-                url: "/reviews",
+                url: "http://localhost:5000/reviews",
                 data: {},
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        alert(response['msg']);
+                        const reviews = response['reviews']
+                        for (let i=0;i<reviews.length; i++) // =for (let i of reviews)
+                            make_card(reviews[i]['title'], reviews[i]['author'], reviews[i]['review'])
+                            //간단히 쓰면 const {title, author, review} = reviews
+                            //make_care(title, author, review)
                         // 2. 성공했을 때 리뷰를 올바르게 화면에 나타내기
                     } else {
                         alert('리뷰를 받아오지 못했습니다');

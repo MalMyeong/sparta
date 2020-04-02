@@ -16,18 +16,20 @@ def write_review():
     title = request.form['title']
     author = request.form['author']
     review = request.form['review']
-    result = db.reviews.insert_one({
+    doc = {
         'title': title,
         'author': author,
         'review': review
-    })
-    return jsonify({'result': 'success', 'msg': '이 요청은 POST!'})
+    }
+    db.reviews.insert_one(doc)
+    return jsonify({'result': 'success', 'msg': '리뷰가 성공적으로 작성되었습니다.'})
 
 
 @app.route('/reviews', methods=['GET'])
 def read_reviews():
-    return jsonify({'result':'success', 'msg': '이 요청은 GET!'})
+    reviews = list(db.reviews.find({},{'_id':0}))
+    return jsonify({'result':'success', 'reviews': reviews})
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('localhost', port=5000, debug=True)
