@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <style>
+        .image {
+            width: 600px;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border: solid;
+            border-color: black;
+        }
+        .item_name {
+            margin: 1rem;
+            text-align: center;
+        }
+        .item_title {
+            width: 980px;
+            font-family: 'Do Hyeon', sans-serif;
+            font-size: x-large;
+            text-align: center;
+        }
+        .item_price {
+            width: 920px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: medium;
+            text-align: center;
+        }
+        .text {
+            width: 610px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .order {
+            max-width: 660px;
+            border-color: unset;
+            padding: 1rem;
+            margin: 1rem auto;
+            border-radius: 0.5rem;
+            display: block;
+            border: unset;
+            margin-bottom: 1rem;
+        }
+        .input-group-text {
+            background-color: #28a745;
+            border: #28a745;
+            color: white;
+        }
+        .orders {
+            margin-top: 100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script>
+        function input_group() {
+            let inputq1 = $('#input-q1').val()
+            let inputq2 = $('#input-q2').val()
+            let inputq3 = $('#input-q3').val()
+            let input_select = $('#orderselect').val()
+            var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
+            if (inputq1==='') {
+                alert('이름을 입력하세요')
+                $('#input-q1').focus()
+            }
+            else if (input_select==='--색상을 선택하세요--') {
+                alert('색상을 선택하세요')
+                $('#orderselect').focus()
+            }
+            else if (inputq2==='') {
+                alert('주소를 입력하세요')
+                $('#input-q2').focus()
+            }
+            else if (!regExp.test( $('#inputq3').val() ) ) {
+                alert('잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.')
+                $('#input-q3').focus()
+            }
+            else {
+                alert('주문하시겠습니까?')
+            }
+        }
+        $(document).ready(function () {
+            $('#orders-box').html('')
+            listing()
+            //orders-box 비우기
+        })
+        function make_order() {
+
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <img class="image" src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-201911_FMT_WHH?wid=2000&amp;hei=2000&amp;fmt=jpeg&amp;qlt=80&amp;op_usm=0.5,0.5&amp;.v=1573800147324" alt="center">
+        </div>
+        <div class="item_name">
+            <h1 class="item_title">
+                애플 아이페드 에어3
+            </h1>
+            <h2 class="item_price">
+                가격: 612,300원
+            </h2>
+            <p class="text">
+                Neural Engine을 탑재한 A12 Bionic 칩, True Tone을 갖춘 10.5형 Retina 디스플레이,
+                여기에 Apple Pencil 및 Smart Keyboard 지원까지. iPad Air는 Apple의 가장 강력한 기술로 가득할 뿐만 아니라,
+                이를 그 어느 때보다 많은 사람이 누릴 수 있게 해줍니다. 게다가 무게는 500g이 채 안 되고,
+                두께는 6.1mm에 불과하다 보니 막강한 힘을 어디라도 가뿐하게 들고 다니는 셈이죠.
+            </p>
+        </div>
+    </div>
+    <div class="order">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">주문자 이름</span>
+            </div>
+            <input id="input-q1" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">색상</label>
+            </div>
+            <select class="custom-select" id="orderselect">
+              <option selected>--색상을 선택하세요--</option>
+              <option value="1">골드</option>
+              <option value="2">실버</option>
+              <option value="3">스페이스 그레이</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+            </div>
+            <input id="input-q2" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+            </div>
+            <input id="input-q3" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button onclick="input_group()" type="button" class="btn btn-success">주문하기</button>
+        <button type="button" class="btn btn-outline-success">장바구니</button>
+        <div class="orders">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">이름</th>
+                        <th scope="col">색상</th>
+                        <th scope="col">주소</th>
+                        <th scope="col">전화번호</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-box">
+                    <tr>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
