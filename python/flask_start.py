@@ -16,4 +16,4 @@ def movies():
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
 
-# flask 해당 주소로 접속했을 때 무엇이 실행될 지 설정하는 것
+# flask 해당 주소로 접속했을 때 무엇이 실행될 지 설정하는 것ㄹ
