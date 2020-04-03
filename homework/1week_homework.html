@@ -65,40 +65,49 @@
         }
     </style>
     <script>
-        function input_group() {
-            let inputq1 = $('#input-q1').val()
-            let inputq2 = $('#input-q2').val()
-            let inputq3 = $('#input-q3').val()
-            let input_select = $('#orderselect').val()
-            var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
-            if (inputq1==='') {
-                alert('이름을 입력하세요')
-                $('#input-q1').focus()
-            }
-            else if (input_select==='--색상을 선택하세요--') {
-                alert('색상을 선택하세요')
-                $('#orderselect').focus()
-            }
-            else if (inputq2==='') {
-                alert('주소를 입력하세요')
-                $('#input-q2').focus()
-            }
-            else if (!regExp.test( $('#inputq3').val() ) ) {
-                alert('잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.')
-                $('#input-q3').focus()
-            }
-            else {
-                alert('주문하시겠습니까?')
-            }
-        }
         $(document).ready(function () {
             $('#orders-box').html('')
             listing()
             //orders-box 비우기
         })
         function make_order() {
-            
+            let name = $('#input-q1').val()
+            let address = $('#input-q2').val()
+            let phone = $('phone').val()
+            let color_select = $('#orderselect').val()
+            var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
+            if (name==='') {
+                alert('이름을 입력하세요')
+                $('#input-q1').focus()
+            }
+            else if (color_select==='--색상을 선택하세요--') {
+                alert('색상을 선택하세요')
+                $('#orderselect').focus()
+            }
+            else if (address==='') {
+                alert('주소를 입력하세요')
+                $('#input-q2').focus()
+            }
+            else if (!regExp.test( $('#phone').val() ) ) {
+                alert('잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.')
+                $('#phone').focus()
+            }
+            else {
+                alert('주문하시겠습니까?')
+            }
         }
+
+
+        make_card(name,address,color,phone) {
+            let temp_html = '<tr>\
+                                <td>'+ name + '</td>\
+                                <td>'+ color + '</td>\
+                                <td>'+ address + '</td>\
+                                <td>'+ phone + '</td>\
+                            </tr>'
+            $('#orders-box').append(temp_html)
+        }
+
     </script>
 </head>
 <body>
@@ -149,9 +158,9 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
             </div>
-            <input id="input-q3" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+            <input id="phone" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
-        <button onclick="input_group()" type="button" class="btn btn-success">주문하기</button>
+        <button onclick="make_order()" type="button" class="btn btn-success">주문하기</button>
         <button type="button" class="btn btn-outline-success">장바구니</button>
         <div class="orders">
             <table class="table">
