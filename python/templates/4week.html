@@ -73,7 +73,7 @@
         function make_order() {
             let name = $('#name').val()
             let address = $('#address').val()
-            let phone = $('phone').val()
+            let phone = $('#phone').val()
             let color_select = $('#colorselect').val()
             var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
             if (name==='') {
@@ -95,14 +95,14 @@
             $.ajax({
                 type: "POST",
                 url: "http://localhost:5000/order",
-                data: {name: name, address: address, phone: phone, color: color},
+                data: {name: name, address: address, phone: phone, color: color_select},
                 success: function(response) {
                     if (response['result'] == 'success') {
                         alert(response['msg'])
                         $('#name').val
                         $('#address').val
                         $('#phone').val
-                        $('#color').val
+                        $('#colorselect').val
                         window.location.reload()
                     }
                 }
@@ -117,8 +117,8 @@
                 success: function(response) {
                     if (response['result'] == 'success') {
                         const order = response['order']
-                        for (let i of order)
-                            make_card(order[i]['name'], order[i]['address'], order[i]['color'], order[i]['phone'])
+                        for (let i=0;i<order.length;i++)
+                            make_card(order[i]['name'], order[i]['phone'], order[i]['color'], order[i]['address'])
                     } else {
                         alert("주문 정보를 불러오지 못했습니다.")
                     }
