@@ -12,15 +12,15 @@ def home():
 
 @app.route('/order', methods=['POST'])
 def write_order():
-    name = request.form['name']
-    address = request.form['address']
-    phone = request.form['phone']
-    color = request.form['color']
+    name_receive = request.form['name_give']
+    address_receive = request.form['address_give']
+    phone_receive = request.form['phone_give']
+    color_receive = request.form['color_give']
     doc = {
-        'name': name,
-        'color': color,
-        'address': address,
-        'phone': phone
+        'name': name_receive,
+        'color': color_receive,
+        'address': address_receive,
+        'phone': phone_receive
     }
     db.order.insert_one(doc)
     return jsonify({'result': 'success', 'msg': '주문이 성공적으로 접수되었습니다.'} )
