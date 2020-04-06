@@ -95,7 +95,7 @@
             $.ajax({
                 type: "POST",
                 url: "http://localhost:5000/order",
-                data: {name: name, address: address, phone: phone, color: color_select},
+                data: {name_give: name, address_give: address, phone_give: phone, color_give: color_select},
                 success: function(response) {
                     if (response['result'] == 'success') {
                         alert(response['msg'])
@@ -135,6 +135,9 @@
                                 <td>'+ phone + '</td>\
                             </tr>'
             $('#orders-box').append(temp_html)
+        }
+        function click_basket() {
+            alert('장바구니에 담으시겠습니까?')
         }
 
     </script>
@@ -190,7 +193,7 @@
             <input id="phone" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <button onclick="make_order()" type="button" class="btn btn-success">주문하기</button>
-        <button type="button" class="btn btn-outline-success">장바구니</button>
+        <button onclick="click_basket()" type="button" class="btn btn-outline-success">장바구니</button>
         <div class="orders">
             <table class="table">
                 <thead>
