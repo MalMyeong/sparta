@@ -68,60 +68,61 @@
               </span>
             </a>
           </footer>
-        </div>`
+        </div>` // </div>옆에 ` 는 숫자 1 왼쪽에 있는거 div 시작하고 끝에 넣어준거
       }
 
 
       function show_star(){
-        $('#star-box').empty()
-        $.ajax({
-            type: 'GET',
-            url:  'http://0.0.0.0:5000/api/list',
-            data: {},
-            success: function (response) {
               $('#star-box').empty()
-              if (response['result'] == 'success') {
-                  let stars = response['msg'];
-                  for (let star of stars) {
-                    let name = star['name']
-                    let url = star['url']
-                    let img_url = star['img_url']
-                    let like = star['like']
-                    let recent = star['recent']
-                    let temp_html = make_card(name,url,img_url,like,recent)
-              $('#star-box').append(temp_html)
-               }
-              }
-            }
-        });
-      }
+			  $.ajax({
+			      type: 'GET',
+			      url:  'http://0.0.0.0:5000/api/list',
+			      data: {},
+			      success: function (response) {
+			                $('#star-box').empty()
+							if (response['result'] == 'success') {
+								let stars = response['msg'];
+								for (let star of stars) {
+								  console.log(star)
+								  let name = star['name']
+								  let url = star['url']
+								  let img_url = star['img_url']
+								  let like = star['like']
+								  let recent = star['recent']
+								  let temp_html = make_card(name,url,img_url,like,recent)
+                  $('#star-box').append(temp_html)
+								}
+							}
+			      }
+			  });
+			}
 
       function like_star(name){
-        $.ajax({
-            type: 'POST',
-            url:  '/api/like',
-            data: {},
-            success: function (response) {
-                if (response['result'] == 'success') {
-                                      let msg = response['msg'];
-                                      alert(msg);
-                }
-            }
-        });
+          $.ajax({
+              type: 'POST',
+              url:  '/api/like',
+              data: {},
+              success: function (response) {
+                  if (response['result'] == 'success') {
+										let msg = response['msg'];
+										alert(msg);
+                  }
+              }
+          });
       }
 
       function delete_star(name){
-        $.ajax({
-            type: 'POST',
-            url:  '/api/delete',
-            data: {},
-            success: function (response) {
-                if (response['result'] == 'success') {
-                                      let msg = response['msg'];
-                                      alert(msg);
-                }
-            }
-        });
+          $.ajax({
+              type: 'POST',
+              url:  '/api/delete',
+              data: {},
+              success: function (response) {
+                  if (response['result'] == 'success') {
+										let msg = response['msg'];
+										alert(msg);
+                  }
+              }
+          });
       }
 
     </script>
