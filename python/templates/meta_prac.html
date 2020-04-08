@@ -51,7 +51,7 @@
           const articles = response['articles']
           for (let i=0;i<articles.length;i++){
             make_card(articles[i]['comment'],articles[i]['description'],articles[i]['image'],articles[i]['title'],articles[i]['url'])
-          }
+          } //파이썬에서 db에 insert해준 값의 이름과 같은지 비교해주어야함 (function make_card도 마찬가지)
         }
       })
     }
