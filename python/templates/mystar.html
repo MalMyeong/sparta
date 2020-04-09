@@ -36,6 +36,7 @@
         // index.html 로드가 완료되면 자동으로 show_star() 함수를 호출합니다.
         show_star();
       });
+      
       function make_card(name,url,img_url,like,recent) {
           return`<div class="card">
           <div class="card-content">
@@ -55,13 +56,18 @@
             </div>
           </div>
           <footer class="card-footer">
-            <a href="#" onclick="like_star(${name})" class="card-footer-item has-text-info">
+            <a href="#" onclick="like_star('${name}')" class="card-footer-item has-text-info">
               위로!
               <span class="icon">
                 <i class="fas fa-thumbs-up"></i>
               </span>
             </a>
-            <a href="#" onclick="delete_star(${name})" class="card-footer-item has-text-danger">
+            <a href="#" onclick="hate_star('${name}')" class="card-footer-item has-text-danger">
+            싫어!
+              <i class="fas fa-ban"></i>
+            </span>
+          </a>
+            <a href="#" onclick="delete_star('${name}')" class="card-footer-item has-text-danger"> 
               삭제
               <span class="icon">
                 <i class="fas fa-ban"></i>
@@ -69,7 +75,7 @@
             </a>
           </footer>
         </div>` // </div>옆에 ` 는 숫자 1 왼쪽에 있는거 div 시작하고 끝에 넣어준거
-      }
+      } // like_star, delete_star 옆 ()안에 ''이 없어서 error 발생 ''를 넣어준 이후 해결 *밑의 name칸 보면 '김다미'라고 되어있음
 
 
       function show_star(){
@@ -100,12 +106,13 @@
       function like_star(name){
           $.ajax({
               type: 'POST',
-              url:  '/api/like',
-              data: {},
+              url:  'http://0.0.0.0:5000/api/like',
+              data: {'name_give':name},
               success: function (response) {
                   if (response['result'] == 'success') {
-										let msg = response['msg'];
-										alert(msg);
+										alert('좋아요 완료!');
+                    // 변경된 정보를 반영하기 위해 새로고침합니다.
+                    window.location.reload()
                   }
               }
           });
@@ -114,15 +121,29 @@
       function delete_star(name){
           $.ajax({
               type: 'POST',
-              url:  '/api/delete',
-              data: {},
+              url:  'http://0.0.0.0:5000/api/delete',
+              data: {'name_give':name},
               success: function (response) {
                   if (response['result'] == 'success') {
-										let msg = response['msg'];
-										alert(msg);
+										alert('삭제 완료! 안녕!');
+                    window.location.reload();
                   }
               }
           });
+      }
+
+      function hate_star(name){
+        $.ajax({
+          type: 'POST',
+          url: 'http://0.0.0.0:5000/api/hate',
+          data: {'name_give':name},
+          success: function(response){
+            if (response['result'] == 'success'){
+              alert('싫어요 완료!')
+              window.location.reload();
+            }
+          }
+        })
       }
 
     </script>
@@ -163,6 +184,11 @@
             위로!
             <span class="icon">
               <i class="fas fa-thumbs-up"></i>
+            </span>
+          </a>
+          <a href="#" onclick="hate_star('김다미')" class="card-footer-item has-text-danger">
+            싫어!
+              <i class="fas fa-ban"></i>
             </span>
           </a>
           <a href="#" onclick="delete_star('김다미')" class="card-footer-item has-text-danger">
